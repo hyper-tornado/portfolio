@@ -29,6 +29,7 @@
             <li><a href="#" onclick="filterWork('all')">ALL</a></li>
             <li><a href="#" onclick="filterWork('logo')">LOGO</a></li>
             <li><a href="#" onclick="filterWork('web')">WEB</a></li>
+            <li><a href="#" onclick="filterWork('other')">OTHER</a></li>
         </ul>
         <div class="menu-deco">💖✨</div>
     </nav>
@@ -39,10 +40,57 @@
                 <button class="tab-btn active" onclick="filterWork('all')">ALL</button>
                 <button class="tab-btn" onclick="filterWork('logo')">LOGO</button>
                 <button class="tab-btn" onclick="filterWork('web')">WEB</button>
+                <button class="tab-btn" onclick="filterWork('other')">OTHER</button> </div>
             </div>
         </div>
     
         <div class="grid-container" id="work-grid">
+
+            <div class="work-card logo is-more more-item">
+                <div class="window-frame" onclick="openDetail('Pink Logo', 'エレガント完成.png', '追加されたピンクのロゴです。')">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="image/エレガント完成.png" alt="">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="work-card other is-more more-item">
+                <div class="window-frame" onclick="openDetail('Sky Web', 'うちわレース完成.png', '追加された青空のサイトです。')">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="image/うちわレース完成.png" alt="">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="work-card web shown">
+                <div class="window-frame" onclick="openDetail('QUIZ GAME', 'https://hyper-tornado.github.io/quiz/', 'このサイトはミニゲームができるクイズサイトです。直感的な操作で楽しめます。')">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="image/クイズ.png" alt="QUIZ GAME プレビュー">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div>            
+            <div class="work-card other is-more more-item">
+                <div class="window-frame" onclick="openDetail('Sky Web', 'image/カードケーズ完成6.png', '追加された青空のサイトです。')">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="image/カードケーズ完成6.png" alt="">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div>                        
+            <!-- <div class="work-card other is-more more-item">
+                <div class="window-frame" onclick="openDetail('Sky Web', 'image/トレカケース.png', '追加された青空のサイトです。')">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="image/トレカケース.png" alt="">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div> -->
             <div class="work-card logo shown">
                 <div class="window-frame" onclick="openDetail('Coffee Beans', 'image/サムネ完.png', 'おいしいコーヒーのロゴ。')">
                     <div class="win-header"><span class="dots">•••</span></div>
@@ -52,42 +100,88 @@
                     </div>
                 </div>
             </div>
-            <div class="work-card web shown">
-                <div class="window-frame" onclick="openDetail('QUIZ GAME', 'https://hyper-tornado.github.io/quiz/', 'このサイトはミニゲームができるクイズサイトです。直感的な操作で楽しめます。')">
-                    <div class="win-header"><span class="dots">•••</span></div>
-                    <div class="win-content">
-                        <img src="https://picsum.photos/400/300?random=12" alt="">
-                        <div class="hover-mask"><span></span></div>
-                    </div>
-                </div>
-            </div>            
             <div class="work-card logo is-more more-item">
-                <div class="window-frame" onclick="openDetail('Pink Logo', 'エレガント完成.png', '追加されたピンクのロゴです。')">
+                <div class="window-frame" onclick="openDetail('Sky Web', 'image/限界突破2.png', '追加された青空のサイトです。')">
                     <div class="win-header"><span class="dots">•••</span></div>
                     <div class="win-content">
-                        <img src="エレガント完成.png" alt="">
+                        <img src="image/限界突破2.png" alt="">
                         <div class="hover-mask"><span>💖</span></div>
                     </div>
                 </div>
             </div>
             <div class="work-card logo is-more more-item">
-                <div class="window-frame" onclick="openDetail('Sky Web', 'うちわレース完成.png', '追加された青空のサイトです。')">
+                <div class="window-frame" onclick="openDetail('Sky Web', 'image/夜明けの雨_3D_CMYK.png', '追加された青空のサイトです。')">
                     <div class="win-header"><span class="dots">•••</span></div>
                     <div class="win-content">
-                        <img src="うちわレース完成.png" alt="">
+                        <img src="image/夜明けの雨_3D_CMYK.png" alt="">
                         <div class="hover-mask"><span>💖</span></div>
                     </div>
                 </div>
             </div>
             <div class="work-card logo is-more more-item">
-                <div class="window-frame" onclick="openDetail('Sky Web', 'image/カードケーズ完成.png', '追加された青空のサイトです。')">
+                <div class="window-frame" onclick="openDetail('Sky Web', 'image/夜明けの雨_CMYK.png', '追加された青空のサイトです。')">
                     <div class="win-header"><span class="dots">•••</span></div>
                     <div class="win-content">
-                        <img src="image/カードケーズ完成.png" alt="">
+                        <img src="image/夜明けの雨_CMYK.png" alt="">
                         <div class="hover-mask"><span>💖</span></div>
                     </div>
                 </div>
             </div>
+            <div class="work-card logo is-more more-item">
+                <div class="window-frame" onclick="openDetail('Sky Web', 'image/歯科ロゴ.png', '追加された青空のサイトです。')">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="image/歯科ロゴ.png" alt="">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="work-card logo is-more more-item">
+                <div class="window-frame" onclick="openDetail('Sky Web', 'image/アイコン作成_.pdf', '追加された青空のサイトです。')">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="image/アイコン.png" alt="">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="work-card other is-more more-item">
+                <div class="window-frame" onclick="openDetail('Sky Web', 'image/医療バナー.png', '追加された青空のサイトです。')">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="image/医療バナー.png" alt="">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="work-card other is-more more-item">
+                <div class="window-frame" onclick="openDetail('Sky Web', 'image/音楽配信バナー.jpg', '追加された青空のサイトです。')">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="image/音楽配信バナー.jpg" alt="">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="work-card web is-more more-item">
+                <div class="window-frame" onclick="openDetail('Sky Web', 'image/音楽配信バナー.jpg', '追加された青空のサイトです。')">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="image/コーヒー屋デザインカンプ.png" alt="">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="work-card other is-more more-item">
+                <div class="window-frame" onclick="openDetail('Sky Web', 'image/英語リスニング.jpg', '追加された青空のサイトです。')">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="image/英語リスニング.jpg" alt="">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div>
+
 
         </div>
     
