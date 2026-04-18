@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cute Portfolio | Dreamy Works</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Potta+One&display=swap" rel="stylesheet">
+</head>
+<body class="cute-theme">
+
+    <div id="loader">
+        <div class="heart-spinner">
+            <span class="heart">♥️</span>
+            <p>Now Loading...</p>
+        </div>
+    </div>
+
+    <header class="cute-header">
+        <div class="logo">Portfolio</div>
+        <div class="menu-trigger" id="menu-btn">
+            <span></span><span></span><span></span>
+        </div>
+    </header>
+
+    <nav id="compact-menu">
+        <div class="menu-close" id="menu-close">×</div>
+        <ul>
+            <li><a href="#" onclick="filterWork('all')">ALL</a></li>
+            <li><a href="#" onclick="filterWork('logo')">LOGO</a></li>
+            <li><a href="#" onclick="filterWork('web')">WEB</a></li>
+        </ul>
+        <div class="menu-deco">💖✨</div>
+    </nav>
+
+    <main>
+        <div class="center-wrapper">
+            <div class="filter-tab-bar">
+                <button class="tab-btn active" onclick="filterWork('all')">ALL</button>
+                <button class="tab-btn" onclick="filterWork('logo')">LOGO</button>
+                <button class="tab-btn" onclick="filterWork('web')">WEB</button>
+            </div>
+        </div>
+    
+        <div class="grid-container" id="work-grid">
+            <div class="work-card logo shown">
+                <div class="window-frame" onclick="openDetail('Coffee Beans', 'image/サムネ完.png', 'おいしいコーヒーのロゴ。')">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="image/サムネ完.png" alt="">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="work-card web shown">
+                <div class="window-frame" onclick="openDetail('QUIZ GAME', 'https://hyper-tornado.github.io/quiz/', 'このサイトはミニゲームができるクイズサイトです。直感的な操作で楽しめます。')">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="https://picsum.photos/400/300?random=12" alt="">
+                        <div class="hover-mask"><span></span></div>
+                    </div>
+                </div>
+            </div>            
+            <div class="work-card logo is-more more-item">
+                <div class="window-frame" onclick="openDetail('Pink Logo', 'エレガント完成.png', '追加されたピンクのロゴです。')">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="エレガント完成.png" alt="">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="work-card logo is-more more-item">
+                <div class="window-frame" onclick="openDetail('Sky Web', 'うちわレース完成.png', '追加された青空のサイトです。')">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="うちわレース完成.png" alt="">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="work-card logo is-more more-item">
+                <div class="window-frame" onclick="openDetail('Sky Web', 'image/カードケーズ完成.png', '追加された青空のサイトです。')">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="image/カードケーズ完成.png" alt="">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    
+        <div class="center-wrapper" id="more-btn-container">
+            <button id="load-more" onclick="showMoreWorks()">＋MORE</button>
+        </div>
+    </main>
+
+    <div id="detail-page" class="hidden">
+        <div class="detail-window">
+            <div class="detail-header">
+                <div class="header-left">
+                    <span class="back-btn" onclick="closeDetail()">← BACK</span>
+                </div>
+                <div class="header-center">
+                    <span id="detail-title">QUIZ GAME</span>
+                </div>
+                <div class="header-right">
+                    <span class="hearts">💖💖💖</span>
+                </div>
+            </div>
+            
+            <div class="detail-body" id="detail-body">
+            </div>
+        </div>
+    </div>
+        
+    <script src="script.js"></script>
+</body>
+</html>
