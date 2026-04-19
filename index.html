@@ -27,7 +27,7 @@
         <div class="menu-close" id="menu-close">×</div>
         <ul>
             <li><a href="#" onclick="filterWork('all')">ALL</a></li>
-            <li><a href="#" onclick="filterWork('logo')">LOGO</a></li>
+            <li><a href="#" onclick="filterWork('typography')">TYPOGRAPHY</a></li>
             <li><a href="#" onclick="filterWork('web')">WEB</a></li>
             <li><a href="#" onclick="filterWork('other')">OTHER</a></li>
         </ul>
@@ -38,7 +38,7 @@
         <div class="center-wrapper">
             <div class="filter-tab-bar">
                 <button class="tab-btn active" onclick="filterWork('all')">ALL</button>
-                <button class="tab-btn" onclick="filterWork('logo')">LOGO</button>
+                <button class="tab-btn" onclick="filterWork('typography')">TYPOGRAPHY</button>
                 <button class="tab-btn" onclick="filterWork('web')">WEB</button>
                 <button class="tab-btn" onclick="filterWork('other')">OTHER</button> </div>
             </div>
@@ -46,17 +46,8 @@
     
         <div class="grid-container" id="work-grid">
 
-            <div class="work-card logo is-more more-item">
-                <div class="window-frame" onclick="openDetail('Pink Logo', 'エレガント完成.png', '追加されたピンクのロゴです。')">
-                    <div class="win-header"><span class="dots">•••</span></div>
-                    <div class="win-content">
-                        <img src="image/エレガント完成.png" alt="">
-                        <div class="hover-mask"><span>💖</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="work-card other is-more more-item">
-                <div class="window-frame" onclick="openDetail('Sky Web', 'うちわレース完成.png', '追加された青空のサイトです。')">
+            <div class="work-card other shown">
+                <div class="window-frame" onclick="openDetail('Sky Web', 'image/うちわレース完成.png', 'アイドルの応援グッズ「うちわ」を刺繍風に作りました。Illustratorでデザインの枠組みを作成し、Photoshopで刺繍のような加工をしました。')">
                     <div class="win-header"><span class="dots">•••</span></div>
                     <div class="win-content">
                         <img src="image/うちわレース完成.png" alt="">
@@ -64,6 +55,15 @@
                     </div>
                 </div>
             </div>
+            <div class="work-card other shown">
+                <div class="window-frame" onclick="openDetail('Sky Web', 'image/カードケーズ完成6.png', '架空のキャラクターを作成して推し活グッズのカードケースを作成しました。キャラクターをさらに引立てるようにハートで枠を作成しました。また、イメージカラーのピンクと推しの名前が目立つようにデザインしました。')">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="image/カードケーズ完成6.png" alt="">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div>                        
             <div class="work-card web shown">
                 <div class="window-frame" onclick="openDetail('QUIZ GAME', 'https://hyper-tornado.github.io/quiz/', 'このサイトはミニゲームができるクイズサイトです。直感的な操作で楽しめます。')">
                     <div class="win-header"><span class="dots">•••</span></div>
@@ -73,15 +73,42 @@
                     </div>
                 </div>
             </div>            
-            <div class="work-card other is-more more-item">
-                <div class="window-frame" onclick="openDetail('Sky Web', 'image/カードケーズ完成6.png', '追加された青空のサイトです。')">
+            <div class="work-card typography shown">
+                <div class="window-frame" onclick="openDetail('Coffee Beans', 'image/サムネ完.png', '架空のゲーム系YouTuberのキル集動画のサムネを作成しました。')">
                     <div class="win-header"><span class="dots">•••</span></div>
                     <div class="win-content">
-                        <img src="image/カードケーズ完成6.png" alt="">
+                        <img src="image/サムネ完.png" alt="">
                         <div class="hover-mask"><span>💖</span></div>
                     </div>
                 </div>
-            </div>                        
+            </div>
+            <div class="work-card web is-more more-item">
+                <div class="window-frame" onclick="openDetail('Sky Web', 'image/コーヒー屋.pdf','架空のコーヒー屋さんのデザインカンプです。')">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="image/コーヒー屋デザインカンプ.png" alt="プレビュー">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div> 
+            <div class="work-card typography is-more more-item">
+                <div class="window-frame" onclick="openDetail('Sky Web', 'image/アイコン作成_.pdf', 'ショッピグサイトのアイコンを作成')">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="image/アイコン.png" alt="">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="work-card typography is-more more-item">
+                <div class="window-frame" onclick="openDetail('Pink Logo', 'image/エレガント完成.png', '某「○子の部屋」のようなエレガントなロゴを作字しました。')">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="image/エレガント完成.png" alt="">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div>
             <!-- <div class="work-card other is-more more-item">
                 <div class="window-frame" onclick="openDetail('Sky Web', 'image/トレカケース.png', '追加された青空のサイトです。')">
                     <div class="win-header"><span class="dots">•••</span></div>
@@ -91,17 +118,8 @@
                     </div>
                 </div>
             </div> -->
-            <div class="work-card logo shown">
-                <div class="window-frame" onclick="openDetail('Coffee Beans', 'image/サムネ完.png', 'おいしいコーヒーのロゴ。')">
-                    <div class="win-header"><span class="dots">•••</span></div>
-                    <div class="win-content">
-                        <img src="image/サムネ完.png" alt="">
-                        <div class="hover-mask"><span>💖</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="work-card logo is-more more-item">
-                <div class="window-frame" onclick="openDetail('Sky Web', 'image/限界突破2.png', '追加された青空のサイトです。')">
+            <div class="work-card typography is-more more-item">
+                <div class="window-frame" onclick="openDetail('Sky Web', 'image/限界突破2.png', 'ギラギラの派手文字でゲームやパチンコの文字をイメージして作りました。')">
                     <div class="win-header"><span class="dots">•••</span></div>
                     <div class="win-content">
                         <img src="image/限界突破2.png" alt="">
@@ -109,8 +127,8 @@
                     </div>
                 </div>
             </div>
-            <div class="work-card logo is-more more-item">
-                <div class="window-frame" onclick="openDetail('Sky Web', 'image/夜明けの雨_3D_CMYK.png', '追加された青空のサイトです。')">
+            <div class="work-card typography is-more more-item">
+                <div class="window-frame" onclick="openDetail('Sky Web', 'image/夜明けの雨_3D_CMYK.png', '作字トライアル')">
                     <div class="win-header"><span class="dots">•••</span></div>
                     <div class="win-content">
                         <img src="image/夜明けの雨_3D_CMYK.png" alt="">
@@ -118,8 +136,8 @@
                     </div>
                 </div>
             </div>
-            <div class="work-card logo is-more more-item">
-                <div class="window-frame" onclick="openDetail('Sky Web', 'image/夜明けの雨_CMYK.png', '追加された青空のサイトです。')">
+            <div class="work-card typography is-more more-item">
+                <div class="window-frame" onclick="openDetail('Sky Web', 'image/夜明けの雨_CMYK.png', '作字トライアル')">
                     <div class="win-header"><span class="dots">•••</span></div>
                     <div class="win-content">
                         <img src="image/夜明けの雨_CMYK.png" alt="">
@@ -127,8 +145,8 @@
                     </div>
                 </div>
             </div>
-            <div class="work-card logo is-more more-item">
-                <div class="window-frame" onclick="openDetail('Sky Web', 'image/歯科ロゴ.png', '追加された青空のサイトです。')">
+            <div class="work-card typography is-more more-item">
+                <div class="window-frame" onclick="openDetail('Sky Web', 'image/歯科ロゴ.png', '架空の歯医者さんのロゴ。利用年齢層が3〜15歳が一番多い歯医者さんを想定し、ポップで可愛らしくデザインにしました。また、歯医者の清潔感が伝わるような落ち着いた配色と一目で分かるように「歯ブラシ」と「歯」のモチーフをデザインしました。「白くま」は歯科名の「きたじま」から「北」を連想し「北極グマ＝白くま」にしました。')">
                     <div class="win-header"><span class="dots">•••</span></div>
                     <div class="win-content">
                         <img src="image/歯科ロゴ.png" alt="">
@@ -136,17 +154,8 @@
                     </div>
                 </div>
             </div>
-            <div class="work-card logo is-more more-item">
-                <div class="window-frame" onclick="openDetail('Sky Web', 'image/アイコン作成_.pdf', '追加された青空のサイトです。')">
-                    <div class="win-header"><span class="dots">•••</span></div>
-                    <div class="win-content">
-                        <img src="image/アイコン.png" alt="">
-                        <div class="hover-mask"><span>💖</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="work-card other is-more more-item">
-                <div class="window-frame" onclick="openDetail('Sky Web', 'image/医療バナー.png', '追加された青空のサイトです。')">
+            <div class="work-card typography is-more more-item">
+                <div class="window-frame" onclick="openDetail('Sky Web', 'image/医療バナー.png', 'LP。医療系求人の広告バナー')">
                     <div class="win-header"><span class="dots">•••</span></div>
                     <div class="win-content">
                         <img src="image/医療バナー.png" alt="">
@@ -154,8 +163,8 @@
                     </div>
                 </div>
             </div>
-            <div class="work-card other is-more more-item">
-                <div class="window-frame" onclick="openDetail('Sky Web', 'image/音楽配信バナー.jpg', '追加された青空のサイトです。')">
+            <div class="work-card typography is-more more-item">
+                <div class="window-frame" onclick="openDetail('Sky Web', 'image/音楽配信バナー.jpg', 'LP。音楽配信サービスの広告バナー')">
                     <div class="win-header"><span class="dots">•••</span></div>
                     <div class="win-content">
                         <img src="image/音楽配信バナー.jpg" alt="">
@@ -163,26 +172,15 @@
                     </div>
                 </div>
             </div>
-            <div class="work-card web is-more more-item">
-                <div class="window-frame" onclick="openDetail('Sky Web', 'image/音楽配信バナー.jpg', '追加された青空のサイトです。')">
-                    <div class="win-header"><span class="dots">•••</span></div>
-                    <div class="win-content">
-                        <img src="image/コーヒー屋デザインカンプ.png" alt="">
-                        <div class="hover-mask"><span>💖</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="work-card other is-more more-item">
-                <div class="window-frame" onclick="openDetail('Sky Web', 'image/英語リスニング.jpg', '追加された青空のサイトです。')">
+            <div class="work-card typography is-more more-item">
+                <div class="window-frame" onclick="openDetail('Sky Web', 'image/英語リスニング.jpg', 'LP。英語リスニングの広告バナー')">
                     <div class="win-header"><span class="dots">•••</span></div>
                     <div class="win-content">
                         <img src="image/英語リスニング.jpg" alt="">
                         <div class="hover-mask"><span>💖</span></div>
                     </div>
                 </div>
-            </div>
-
-
+            </div>                   
         </div>
     
         <div class="center-wrapper" id="more-btn-container">
