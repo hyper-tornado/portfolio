@@ -33,7 +33,6 @@ body {
    2. コンポーネント (ローディング・ヘッダー・メニュー)
    ============================================================ */
 
-/* ローディング：ハートのアニメーション */
 #loader {
     position: fixed; inset: 0; 
     background: var(--accent-purple);
@@ -47,7 +46,6 @@ body {
     display: block; animation: heartBeat 1s infinite; 
 }
 
-/* ヘッダー：重なり防止のため独立 */
 .cute-header {
     background-color: #5c81f2;
     border-bottom: var(--white-border);
@@ -58,7 +56,6 @@ body {
 }
 .logo { font-size: 1.5rem; color: #FFFFFF; text-shadow: 2px 2px 0 rgba(0,0,0,0.1); font-weight: bold; }
 
-/* ハンバーガーメニュー */
 .menu-trigger { cursor: pointer; display: flex; flex-direction: column; gap: 5px; }
 .menu-trigger span { display: block; width: 25px; height: 3px; background: #FFF; border-radius: 5px; }
 
@@ -95,7 +92,6 @@ body {
     padding: 12px 50px; border-radius: 50px; font-weight: bold;
     cursor: pointer; box-shadow: 0 6px 0 rgba(0,0,0,0.1); transition: 0.3s;
 }
-#load-more:hover { transform: scale(1.05); background: #d0d0f0; }
 
 /* ============================================================
    4. 作品グリッド
@@ -108,7 +104,6 @@ body {
 .work-card { display: none; }
 .work-card.shown { display: block; animation: popIn 0.5s; }
 
-/* カードのウィンドウデザイン */
 .window-frame {
     background: #5d6bee; border: 2px solid #5d6bee; border-radius: 15px;
     overflow: hidden; box-shadow: 0 6px 0 rgba(0, 0, 0, 0.2);
@@ -120,7 +115,6 @@ body {
 .win-content { position: relative; aspect-ratio: 16/10; background: #eee; }
 .win-content img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-/* ホバー時のピンクのマスク */
 .hover-mask {
     position: absolute; inset: 0; background: rgba(255,182,193,0.8);
     display: flex; justify-content: center; align-items: center; 
@@ -129,7 +123,7 @@ body {
 .window-frame:hover .hover-mask { opacity: 1; }
 
 /* ============================================================
-   5. 詳細ページ (全画面表示・小窓プレビュー)
+   5. 詳細ページ (修正版)
    ============================================================ */
 
 #detail-page {
@@ -146,7 +140,6 @@ body {
 .detail-window {
     width: 100%; height: 100%;
     display: flex; flex-direction: column;
-    animation: fadeIn 0.3s ease-out;
 }
 
 .detail-header {
@@ -162,93 +155,83 @@ body {
     border: 2px solid #FFFFFF; transition: 0.2s;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
-.back-btn:hover { transform: scale(1.1); }
 
-#detail-title {
-    color: #FFFFFF; font-size: 1.1rem; font-weight: bold;
-    letter-spacing: 2px; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-}
+#detail-title { color: #FFFFFF; font-size: 1.1rem; font-weight: bold; }
 
-/* メインボディ：左プレビュー、右説明文 */
+/* メインレイアウト */
 .detail-body {
-    flex: 1; display: flex; flex-direction: row; gap: 40px;
-    padding: 30px 5%; overflow-y: auto;
+    flex: 1; display: flex; flex-direction: row; gap: 30px;
+    padding: 20px 5%; overflow-y: auto;
 }
 
-/* 左側：プレビューコンテナ */
+/* --- 左側：画像プレビューエリア --- */
 #detail-img-container {
-    flex: 2; display: flex; flex-direction: column;
-    position: relative; min-height: 400px;
+    flex: 1.5; display: flex; flex-direction: column;
+    min-width: 0; /* 子要素の幅制御のため */
 }
 
-/* ★ 小窓ウィンドウ枠 ★ */
 .iframe-wrapper {
-    flex: 1; width: 100%; background: #fff;
-    border-radius: 20px; border: 3px solid var(--win-border);
-    overflow: hidden; position: relative; padding-top: 35px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    margin-bottom: 15px; 
+    background: #fff; border-radius: 20px; border: 3px solid var(--win-border);
+    position: relative; padding-top: 35px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    overflow: hidden;
 }
-/* ウィンドウ上部のバーとドット */
+
+/* ウィンドウ上部のドット装飾 */
 .iframe-wrapper::before {
     content: "● ● ●"; position: absolute; top: 0; left: 0; 
     width: 100%; height: 35px; background: var(--accent-purple);
     color: var(--win-border); font-size: 10px; line-height: 35px; 
     padding-left: 20px; border-bottom: 3px solid var(--win-border);
 }
-.iframe-wrapper iframe { width: 100%; height: 100%; border: none; }
 
-/* 画像のときは枠の高さを固定しない */
-.iframe-wrapper.img-mode {
-    height: auto !important;
-    min-height: 0 !important;
-    display: table; /* 画像の幅に枠を合わせる */
-    width: auto;
-    margin: 0 auto;
-}
+/* 画像が棒にならないための設定 */
 .iframe-wrapper.img-mode img {
-    max-width: 100%;
-    max-height: 70vh; /* 画面からはみ出さない高さ */
+    width: 100%; height: auto; max-height: 70vh;
+    object-fit: contain; display: block;
 }
 
-/* ★ ボタンエリア：プレビュー枠の「右下」へ ★ */
-.button-area {
-    display: flex; justify-content: flex-end; padding-bottom: 20px;
-}
+/* PDF/Webサイト表示用 */
+.iframe-wrapper iframe { width: 100%; height: 500px; border: none; }
+
+.button-area { display: flex; justify-content: flex-end; margin-top: 10px; }
 .visit-link {
-    display: inline-block; padding: 10px 30px;
-    background: #93b6ff; color: #ffffff !important;
-    text-decoration: none; border-radius: 30px;
-    font-size: 0.9rem; font-weight: bold;
-    border: 3px solid #FFFFFF; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: 0.2s;
+    padding: 8px 20px; background: #93b6ff; color: #fff !important;
+    text-decoration: none; border-radius: 30px; font-weight: bold;
+    border: 3px solid #FFF; transition: 0.2s;
 }
-.visit-link:hover { background: #ffcbfa; transform: translateY(-3px); }
 
-/* 右側：説明文 */
-#detail-desc-container { flex: 1; text-align: left; }
-#detail-desc { font-size: 1.1rem; line-height: 2; color: var(--text-color); }
+/* --- 右側：説明文エリア --- */
+#detail-desc-container {
+    flex: 1; display: flex; flex-direction: column; gap: 15px;
+}
+
+.about-section {
+    background: rgba(255, 255, 255, 0.7); padding: 15px;
+    border-radius: 15px; border: 2px dashed var(--main-pink);
+}
+
+.desc-text { font-size: 0.95rem; line-height: 1.7; font-weight: bold; color: var(--text-color); }
+
+.detail-info-list { list-style: none; padding: 0; margin: 0; }
+.detail-info-list li {
+    margin-bottom: 10px; padding: 10px 15px; background: #fff;
+    border-radius: 12px; border: 1px solid var(--accent-purple);
+    box-shadow: 3px 3px 0 var(--accent-purple);
+    display: flex; flex-direction: column;
+}
+
+.detail-info-list .label { font-size: 0.7rem; color: #ff9ee6; font-weight: bold; margin-bottom: 2px; }
+.detail-info-list .value { font-size: 0.9rem; font-weight: bold; }
 
 /* ============================================================
-   6. アニメーション & レスポンシブ (スマホ向け最終調整)
+   6. アニメーション & レスポンシブ
    ============================================================ */
 
 @keyframes heartBeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
 @keyframes popIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 @media (max-width: 900px) {
-    .cute-header { padding: 10px 5%; }
-    .logo { font-size: 1.2rem; }
-    
-    .detail-body { flex-direction: column; padding: 20px; overflow-y: auto; }
-    
-    #detail-img-container { flex: none; width: 100%; min-height: auto; }
-    .iframe-wrapper { 
-        min-height: 65vh; /* スマホ画面の6.5割の高さに */
-        height: auto; 
-    }
-    
-    #detail-desc-container { flex: none; width: 100%; padding-bottom: 60px; }
+    .detail-body { flex-direction: column; }
     .grid-container { grid-template-columns: 1fr; }
+    .iframe-wrapper.img-mode img { max-height: 50vh; }
 }

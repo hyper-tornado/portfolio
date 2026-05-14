@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Potta+One&display=swap" rel="stylesheet">
 </head>
+
 <body class="cute-theme">
 
     <div id="loader">
@@ -40,14 +42,17 @@
                 <button class="tab-btn active" onclick="filterWork('all')">ALL</button>
                 <button class="tab-btn" onclick="filterWork('typography')">TYPOGRAPHY</button>
                 <button class="tab-btn" onclick="filterWork('web')">WEB</button>
-                <button class="tab-btn" onclick="filterWork('other')">OTHER</button> </div>
+                <button class="tab-btn" onclick="filterWork('other')">OTHER</button>
             </div>
         </div>
-    
+        </div>
+
         <div class="grid-container" id="work-grid">
 
+            <!-- 例：うちわデザイン -->
             <div class="work-card other shown">
-                <div class="window-frame" onclick="openDetail('Sky Web', 'image/うちわレース完成.png', 'アイドルの応援グッズ「うちわ」を刺繍風に作りました。Illustratorでデザインの枠組みを作成し、Photoshopで刺繍のような加工をしました。')">
+                <div class="window-frame"
+                    onclick="openDetail('うちわデザイン', 'image/うちわレース完成.png', 'アイドルの応援グッズ「うちわ」を刺繍風に作りました。', 'Illustrator, Photoshop', '5時間', '10代〜20代女性', 'ライブ、イベント、推し活')">
                     <div class="win-header"><span class="dots">•••</span></div>
                     <div class="win-content">
                         <img src="image/うちわレース完成.png" alt="">
@@ -55,26 +60,31 @@
                     </div>
                 </div>
             </div>
+
+            <!-- 例：トレカケース -->
             <div class="work-card other shown">
-                <div class="window-frame" onclick="openDetail('Sky Web', 'image/トレカ.pdf', '架空のキャラクターを作成して推し活グッズのカードケースを作成しました。キャラクターがさらに魅力的に見えるように全体をハートの枠で囲みました。また、イメージカラーのピンクとキャラクターの名前が目立つようにデザインしました。')">
+                <div class="window-frame"
+                    onclick="openDetail('トレカケース', 'image/カードケーズ完成6.png', '架空のキャラクターを作成して推し活グッズのカードケースを作成しました。', 'Photoshop, ClipStudio', '3日間', '全世代の推し活層', 'グッズ販売、展示会')">
                     <div class="win-header"><span class="dots">•••</span></div>
                     <div class="win-content">
-                        <img src="image/カードケーズ完成6.png" alt="">
+                        <img src="image/カードケーズ完成6.png" alt="">
                         <div class="hover-mask"><span>💖</span></div>
                     </div>
                 </div>
-            </div>                        
+            </div>
             <div class="work-card web shown">
-                <div class="window-frame" onclick="openDetail('QUIZ GAME', 'https://hyper-tornado.github.io/quiz/', 'このサイトはミニゲームができるクイズサイトです。直感的な操作で楽しめます。')">
+                <div class="window-frame"
+                    onclick="openDetail('QUIZ GAME', 'https://hyper-tornado.github.io/quiz/', 'このサイトはミニゲームができるクイズサイトです。直感的な操作で楽しめます。')">
                     <div class="win-header"><span class="dots">•••</span></div>
                     <div class="win-content">
                         <img src="image/クイズ.png" alt="QUIZ GAME プレビュー">
                         <div class="hover-mask"><span>💖</span></div>
                     </div>
                 </div>
-            </div>            
+            </div>
             <div class="work-card typography shown">
-                <div class="window-frame" onclick="openDetail('Coffee Beans', 'image/サムネ完.png', '架空のゲーム系YouTuberのキル集動画のサムネを作成しました。')">
+                <div class="window-frame"
+                    onclick="openDetail('Coffee Beans', 'image/サムネ完.png', '架空のゲーム系YouTuberのキル集動画のサムネを作成しました。')">
                     <div class="win-header"><span class="dots">•••</span></div>
                     <div class="win-content">
                         <img src="image/サムネ完.png" alt="">
@@ -90,7 +100,7 @@
                         <div class="hover-mask"><span>💖</span></div>
                     </div>
                 </div>
-            </div> 
+            </div>
             <div class="work-card other is-more more-item">
                 <div class="window-frame" onclick="openDetail('Sky Web', 'image/retatti .pdf','レタッチ加工')">
                     <div class="win-header"><span class="dots">•••</span></div>
@@ -99,7 +109,7 @@
                         <div class="hover-mask"><span>💖</span></div>
                     </div>
                 </div>
-            </div> 
+            </div>
             <div class="work-card typography is-more more-item">
                 <div class="window-frame" onclick="openDetail('Sky Web', 'image/アイコン作成_.pdf', 'ショッピグサイトのアイコンを作成')">
                     <div class="win-header"><span class="dots">•••</span></div>
@@ -110,7 +120,8 @@
                 </div>
             </div>
             <div class="work-card typography is-more more-item">
-                <div class="window-frame" onclick="openDetail('Pink Logo', 'image/エレガント完成.png', '某「○子の部屋」のようなエレガントなロゴを作字しました。')">
+                <div class="window-frame"
+                    onclick="openDetail('Pink Logo', 'image/エレガント完成.png', '某「○子の部屋」のようなエレガントなロゴを作字しました。')">
                     <div class="win-header"><span class="dots">•••</span></div>
                     <div class="win-content">
                         <img src="image/エレガント完成.png" alt="">
@@ -128,7 +139,8 @@
                 </div>
             </div> -->
             <div class="work-card typography is-more more-item">
-                <div class="window-frame" onclick="openDetail('Sky Web', 'image/限界突破2.png', 'ギラギラの派手文字でゲームやパチンコの文字をイメージして作りました。')">
+                <div class="window-frame"
+                    onclick="openDetail('Sky Web', 'image/限界突破2.png', 'ギラギラの派手文字でゲームやパチンコの文字をイメージして作りました。')">
                     <div class="win-header"><span class="dots">•••</span></div>
                     <div class="win-content">
                         <img src="image/限界突破2.png" alt="">
@@ -146,7 +158,8 @@
                 </div>
             </div>
             <div class="work-card typography is-more more-item">
-                <div class="window-frame" onclick="openDetail('Sky Web', 'image/歯科ロゴ.png', '架空の歯医者さんのロゴ。利用年齢層が3〜15歳が一番多い歯医者さんを想定し、ポップで可愛らしくデザインにしました。また、歯医者の清潔感が伝わるような落ち着いた配色と一目で分かるように「歯ブラシ」と「歯」のモチーフをデザインしました。「白くま」は歯科名の「きたじま」から「北」を連想し「北極グマ＝白くま」にしました。')">
+                <div class="window-frame"
+                    onclick="openDetail('Sky Web', 'image/歯科ロゴ.png', '架空の歯医者さんのロゴ。利用年齢層が3〜15歳が一番多い歯医者さんを想定し、ポップで可愛らしくデザインにしました。また、歯医者の清潔感が伝わるような落ち着いた配色と一目で分かるように「歯ブラシ」と「歯」のモチーフをデザインしました。「白くま」は歯科名の「きたじま」から「北」を連想し「北極グマ＝白くま」にしました。')">
                     <div class="win-header"><span class="dots">•••</span></div>
                     <div class="win-content">
                         <img src="image/歯科ロゴ.png" alt="">
@@ -180,9 +193,9 @@
                         <div class="hover-mask"><span>💖</span></div>
                     </div>
                 </div>
-            </div>                   
+            </div>
         </div>
-    
+
         <div class="center-wrapper" id="more-btn-container">
             <button id="load-more" onclick="showMoreWorks()">＋MORE</button>
         </div>
@@ -201,12 +214,13 @@
                     <span class="hearts">💖💖💖</span>
                 </div>
             </div>
-            
+
             <div class="detail-body" id="detail-body">
             </div>
         </div>
     </div>
-        
+
     <script src="script.js"></script>
 </body>
+
 </html>

@@ -58,17 +58,15 @@ function showMoreWorks() {
 }
 
 // 5. 詳細ページの開閉（画像表示の修正版）
-function openDetail(title, link, desc) {
+function openDetail(title, link, desc, tools = "---", time = "---", target = "---", scene = "---") {
     const detailBody = document.getElementById('detail-body');
     const detailTitle = document.getElementById('detail-title');
     detailTitle.innerText = title;
 
-    // ★ 判定条件の改善：拡張子が画像(PNG等)なら最優先でimgタグを使う
     const isImageUrl = link.match(/\.(jpg|jpeg|png|gif|PNG)$/i);
     let previewHtml = "";
 
     if (isImageUrl) {
-        // 画像の場合
         previewHtml = `
             <div id="detail-img-container">
                 <div class="iframe-wrapper img-mode">
@@ -79,7 +77,6 @@ function openDetail(title, link, desc) {
                 </div>
             </div>`;
     } else {
-        // Webサイト(http)の場合
         previewHtml = `
             <div id="detail-img-container">
                 <div class="iframe-wrapper">
@@ -91,7 +88,22 @@ function openDetail(title, link, desc) {
             </div>`;
     }
 
-    detailBody.innerHTML = `${previewHtml}<div id="detail-desc-container"><p id="detail-desc">${desc}</p></div>`;
+    // ★ 説明文とリスト形式の詳細情報
+    const infoHtml = `
+        <div id="detail-desc-container">
+            <div class="about-section">
+                <p class="desc-text">${desc}</p>
+            </div>
+            <ul class="detail-info-list">
+                <li><span class="label">🎨 使用ツール</span><span class="value">${tools}</span></li>
+                <li><span class="label">⏰ 制作時間</span><span class="value">${time}</span></li>
+                <li><span class="label">👥 ターゲット</span><span class="value">${target}</span></li>
+                <li><span class="label">📺 使用シーン</span><span class="value">${scene}</span></li>
+            </ul>
+        </div>
+    `;
+
+    detailBody.innerHTML = previewHtml + infoHtml;
     document.getElementById('detail-page').classList.remove('hidden');
     document.body.style.overflow = 'hidden'; 
 }
