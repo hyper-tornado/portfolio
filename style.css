@@ -32,7 +32,6 @@ body {
 /* ============================================================
    2. コンポーネント (ローディング・ヘッダー・メニュー)
    ============================================================ */
-
 #loader {
     position: fixed; inset: 0; 
     background: var(--accent-purple);
@@ -71,7 +70,6 @@ body {
 /* ============================================================
    3. フィルターボタン・もっと見るボタン
    ============================================================ */
-
 .center-wrapper { display: flex; justify-content: center; width: 100%; margin: 30px 0; }
 .filter-tab-bar { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
 
@@ -96,7 +94,6 @@ body {
 /* ============================================================
    4. 作品グリッド
    ============================================================ */
-
 .grid-container {
     display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
     max-width: 1000px; margin: 0 auto; padding: 0 20px 40px;
@@ -123,9 +120,8 @@ body {
 .window-frame:hover .hover-mask { opacity: 1; }
 
 /* ============================================================
-   5. 詳細ページ (修正版)
+   5. 詳細ページ（PC・スマホいつでもボタン右下完全固定版）
    ============================================================ */
-
 #detail-page {
     position: fixed; top: 0; left: 0; 
     width: 100vw; height: 100vh;
@@ -143,95 +139,237 @@ body {
 }
 
 .detail-header {
-    background: #b0d8ff; height: 50px;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 20px; border-bottom: 3px solid #FFFFFF;
+    background: #77bbff; 
+    height: 50px;
+    display: flex; 
+    align-items: center; 
+    padding: 0 20px; 
+    border-bottom: 3px solid #FFFFFF;
+    position: relative; /* 子要素を絶対配置するための基準にします */
 }
 
+/* 戻るボタン（左端に固定） */
 .back-btn {
-    background: #FFFFFF; color: #ffa8f2;
-    padding: 4px 12px; border-radius: 20px;
-    font-size: 0.8rem; font-weight: bold; cursor: pointer;
-    border: 2px solid #FFFFFF; transition: 0.2s;
+    background: #FFFFFF; 
+    color: #ffa8f2;
+    /* 👇 余白を上下・左右ともに少し削ってボタン自体を小さくしました */
+    padding: 4px 12px;    
+    border-radius: 20px;
+    /* 👇 文字の大きさを 1.1rem から 0.9rem に落として一回り小さくしました */
+    font-size: 0.9rem; 
+    font-weight: bold; 
+    cursor: pointer;
+    border: 2px solid #FFFFFF; 
+    transition: 0.2s;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 10; /* タイトルより前面に出す */
 }
 
-#detail-title { color: #FFFFFF; font-size: 1.1rem; font-weight: bold; }
+/* 👑 真ん中のタイトル（どんなサイズでも画面のド真ん中に固定） */
+#detail-title { 
+    color: #FFFFFF; 
+    font-size: 1.3rem; /* 大きくしたフォントサイズ */
+    font-weight: bold; 
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* 完全に上下左右の中央に配置 */
+    white-space: nowrap; /* 途中で改行されるのを防ぐ */
+    z-index: 1;
+}
 
-/* メインレイアウト */
+/* 右側のハート装飾エリア（右端に寄せる） */
+/* もしHTML側で右側の要素（ハートなど）を囲むクラス名が別にあれば適宜合わせてください。
+   現状、space-betweenの代わりに右端へ自動で押し出す設定を入れています */
+   .detail-header > *:last-child {
+    margin-left: auto;
+    position: relative;
+    z-index: 10;
+}
+
+/* ポップアップメイン */
 .detail-body {
-    flex: 1; display: flex; flex-direction: row; gap: 30px;
-    padding: 20px 5%; overflow-y: auto;
+    flex: 1; 
+    display: flex; 
+    flex-direction: row; 
+    gap: 40px;
+    padding: 40px 5%; 
+    overflow-y: auto;
+    align-items: flex-start;
 }
 
-/* --- 左側：画像プレビューエリア --- */
+/* --- 左側：作品表示枠エリア（常にボタンの基準位置になるよう絶対保持） --- */
 #detail-img-container {
-    flex: 1.5; display: flex; flex-direction: column;
-    min-width: 0; /* 子要素の幅制御のため */
+    flex: 1.4; 
+    width: 100%;
+    min-width: 0; 
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: relative;
+    padding-bottom: 55px; /* PC・スマホ共通：ボタンが下に飛び出すための余白 */
 }
 
+/* 💻 パソコン風ウィンドウのベース設定 */
 .iframe-wrapper {
-    background: #fff; border-radius: 20px; border: 3px solid var(--win-border);
-    position: relative; padding-top: 35px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 11; 
+    background: #ffffff; 
+    border-radius: 18px;
+    border: 4px solid #b8b8ff; 
+    box-shadow: 0 10px 0 rgba(123, 132, 243, 0.15);
     overflow: hidden;
+    padding-top: 35px;
 }
 
-/* ウィンドウ上部のドット装飾 */
+/* ウィンドウ上部の「● ● ●」装飾 */
 .iframe-wrapper::before {
-    content: "● ● ●"; position: absolute; top: 0; left: 0; 
-    width: 100%; height: 35px; background: var(--accent-purple);
-    color: var(--win-border); font-size: 10px; line-height: 35px; 
-    padding-left: 20px; border-bottom: 3px solid var(--win-border);
+    content: "● ● ●"; 
+    position: absolute; top: 0; left: 0; 
+    width: 100%; height: 35px; 
+    background: var(--accent-purple);
+    color: var(--win-border); 
+    font-size: 10px; 
+    line-height: 35px; 
+    padding-left: 20px; 
+    border-bottom: 3px solid var(--win-border);
+    z-index: 10;
 }
 
-/* 画像が棒にならないための設定 */
-.iframe-wrapper.img-mode img {
-    width: 100%; height: auto; max-height: 70vh;
-    object-fit: contain; display: block;
+/* 通常の共通設定（PDFやWeb用） */
+.iframe-wrapper img, 
+.iframe-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
 }
 
-/* PDF/Webサイト表示用 */
-.iframe-wrapper iframe { width: 100%; height: 500px; border: none; }
+/* 画像（type-image）のときだけ、枠を中身にジャストフィットさせる */
+#detail-img-container.type-image .iframe-wrapper {
+    aspect-ratio: auto !important;
+    height: auto !important;
+}
+#detail-img-container.type-image .iframe-wrapper img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 65vh;
+    object-fit: contain !important;
+}
 
-.button-area { display: flex; justify-content: flex-end; margin-top: 10px; }
+/* 🛠️ 全画面ボタンエリア：PC・スマホ関係なく【常に枠の右下】に絶対配置 */
+.button-area { 
+    display: flex; 
+    justify-content: flex-end; 
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: auto;
+    margin-top: 0;
+    z-index: 100;
+}
+
 .visit-link {
-    padding: 8px 20px; background: #93b6ff; color: #fff !important;
-    text-decoration: none; border-radius: 30px; font-weight: bold;
-    border: 3px solid #FFF; transition: 0.2s;
+    padding: 8px 24px; 
+    background: #93b6ff; 
+    color: #fff !important;
+    text-decoration: none; 
+    border-radius: 30px; 
+    font-size: 0.9rem;
+    font-weight: bold;
+    border: 3px solid #FFF; 
+    transition: 0.2s;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.1);
+}
+.visit-link:hover {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 rgba(0,0,0,0.1);
 }
 
-/* --- 右側：説明文エリア --- */
+/* --- 右側：説明文・吹き出しエリア --- */
 #detail-desc-container {
-    flex: 1; display: flex; flex-direction: column; gap: 15px;
+    flex: 1; 
+    width: 100%;
+    min-width: 0; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 15px;
 }
 
-.about-section {
-    background: rgba(255, 255, 255, 0.7); padding: 15px;
-    border-radius: 15px; border: 2px dashed var(--main-pink);
+.balloon-text {
+    position: relative;
+    background: #eef7ff; 
+    border: 2px solid #b8baff; 
+    border-radius: 15px;
+    padding: 18px;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-color);
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+    animation: popIn 0.4s ease forwards;
 }
 
-.desc-text { font-size: 0.95rem; line-height: 1.7; font-weight: bold; color: var(--text-color); }
-
-.detail-info-list { list-style: none; padding: 0; margin: 0; }
-.detail-info-list li {
-    margin-bottom: 10px; padding: 10px 15px; background: #fff;
-    border-radius: 12px; border: 1px solid var(--accent-purple);
-    box-shadow: 3px 3px 0 var(--accent-purple);
-    display: flex; flex-direction: column;
+.balloon-text::before {
+    content: "";
+    position: absolute;
+    left: -10px; 
+    top: 22px;
+    border-style: solid;
+    border-width: 8px 10px 8px 0;
+    border-color: transparent #b8baff transparent transparent; 
+    z-index: 1;
+}
+.balloon-text::after {
+    content: "";
+    position: absolute;
+    left: -8px;
+    top: 22px;
+    border-style: solid;
+    border-width: 8px 10px 8px 0;
+    border-color: transparent #eef7ff transparent transparent; 
+    z-index: 2;
 }
 
-.detail-info-list .label { font-size: 0.7rem; color: #ff9ee6; font-weight: bold; margin-bottom: 2px; }
-.detail-info-list .value { font-size: 0.9rem; font-weight: bold; }
+.spec-item {
+    background: #FFF; 
+    border-radius: 15px; 
+    padding: 14px 18px; 
+    border: 2px solid #e2e2f9;
+}
 
 /* ============================================================
    6. アニメーション & レスポンシブ
    ============================================================ */
-
 @keyframes heartBeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
 @keyframes popIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
+/* スマホ表示用の設定 */
 @media (max-width: 900px) {
-    .detail-body { flex-direction: column; }
-    .grid-container { grid-template-columns: 1fr; }
-    .iframe-wrapper.img-mode img { max-height: 50vh; }
+    .detail-body { 
+        flex-direction: column; 
+        padding: 20px;
+        gap: 25px;
+    }
+    #detail-img-container, 
+    #detail-desc-container { 
+        flex: none; 
+        width: 100%; 
+    }
+    /* スマホ時は吹き出しのヒゲを上に変更 */
+    .balloon-text::before {
+        left: 25px; top: -10px;
+        border-width: 0 8px 10px 8px;
+        border-color: transparent transparent #b8baff transparent;
+    }
+    .balloon-text::after {
+        left: 25px; top: -8px;
+        border-width: 0 8px 10px 8px;
+        border-color: transparent transparent #eef7ff transparent;
+    }
+    .grid-container { 
+        grid-template-columns: 1fr; 
+    }
 }

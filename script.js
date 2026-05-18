@@ -1,30 +1,28 @@
-// 1. ローディング解除
 window.addEventListener('load', () => {
     setTimeout(() => {
         const loader = document.getElementById('loader');
-        loader.style.opacity = '0';
-        setTimeout(() => loader.style.display = 'none', 500);
+        if(loader) {
+            loader.style.opacity = '0';
+            setTimeout(() => loader.style.display = 'none', 500);
+        }
     }, 1200);
 });
 
-// 2. ハンバーガーメニュー開閉
 const menuBtn = document.getElementById('menu-btn');
-const closeBtn = document.getElementById('menu-close');
 const menu = document.getElementById('compact-menu');
-
 if(menuBtn) {
     menuBtn.onclick = (e) => {
         e.stopPropagation();
         menu.classList.toggle('open');
     };
 }
-window.onclick = () => menu.classList.remove('open');
+window.onclick = () => { if(menu) menu.classList.remove('open'); };
 
-// 3. フィルタリング機能
 function filterWork(category) {
     const cards = document.querySelectorAll('.work-card');
     const btns = document.querySelectorAll('.tab-btn');
     const moreBtnContainer = document.getElementById('more-btn-container');
+    
     btns.forEach(btn => btn.classList.remove('active'));
     if (event && event.target) event.target.classList.add('active');
 
@@ -40,12 +38,10 @@ function filterWork(category) {
     });
 }
 
-// 4. MOREボタン
 function showMoreWorks() {
     const moreCards = document.querySelectorAll('.work-card.more-item');
     const btn = document.getElementById('load-more');
-    const isClosing = btn.innerText === '-CLOSE';
-    if (isClosing) {
+    if (btn.innerText === '-CLOSE') {
         moreCards.forEach(card => card.classList.remove('shown'));
         btn.innerText = '＋MORE';
     } else {
@@ -57,20 +53,33 @@ function showMoreWorks() {
     }
 }
 
-// 5. 詳細ページの開閉（画像表示の修正版）
-function openDetail(title, link, desc, tools = "---", time = "---", target = "---", scene = "---") {
+// 作品の形式に合せて、プレビュー枠をぴったりフィットさせる関数
+function openDetail(title, link, desc, tool="", time="", target="", scene="") {
     const detailBody = document.getElementById('detail-body');
     const detailTitle = document.getElementById('detail-title');
     detailTitle.innerText = title;
 
-    const isImageUrl = link.match(/\.(jpg|jpeg|png|gif|PNG)$/i);
     let previewHtml = "";
 
-    if (isImageUrl) {
+    // 拡張子からファイルタイプを細かくチェック
+    const isImage = link.match(/\.(jpg|jpeg|png|gif|PNG)$/i);
+    const isPdf = link.match(/\.pdf$/i);
+
+    if (isImage) {
         previewHtml = `
-            <div id="detail-img-container">
-                <div class="iframe-wrapper img-mode">
-                    <img src="${link}" style="width:100%; height:auto; display:block;">
+            <div id="detail-img-container" class="type-image">
+                <div class="iframe-wrapper">
+                    <img src="${link}" alt="プレビュー">
+                </div>
+                <div class="button-area">
+                    <a href="${link}" target="_blank" class="visit-link">全画面で開く ↗</a>
+                </div>
+            </div>`;
+    } else if (isPdf) {
+        previewHtml = `
+            <div id="detail-img-container" class="type-pdf">
+                <div class="iframe-wrapper">
+                    <iframe src="${link}#toolbar=0&navpanes=0&scrollbar=1&view=FitH"></iframe>
                 </div>
                 <div class="button-area">
                     <a href="${link}" target="_blank" class="visit-link">全画面で開く ↗</a>
@@ -78,7 +87,7 @@ function openDetail(title, link, desc, tools = "---", time = "---", target = "--
             </div>`;
     } else {
         previewHtml = `
-            <div id="detail-img-container">
+            <div id="detail-img-container" class="type-web">
                 <div class="iframe-wrapper">
                     <iframe src="${link}"></iframe>
                 </div>
@@ -88,20 +97,38 @@ function openDetail(title, link, desc, tools = "---", time = "---", target = "--
             </div>`;
     }
 
-    // ★ 説明文とリスト形式の詳細情報
+    // 👑 【完全解決】自動での改行分割を完全にやめました。
+    // HTMLから送られてきた文字の中に「<div」が入っているかどうかで処理を分けます。
+    let balloonsHtml = "";
+    
+    if (desc.includes('<div')) {
+        // 【DIVタグが書いてある場合】
+        // あなたがHTMLに書いた複数の <div>...</div> 構造をそのまま画面に反映させます。
+        balloonsHtml = desc;
+    } else {
+        // 【DIVタグがない、普通のテキストの場合】
+        // 全体を自動的に1つの吹き出しクラス（balloon-text）で包みます。（<br>での改行もそのまま有効になります）
+        balloonsHtml = `<div class="balloon-text">${desc}</div>`;
+    }
+
+    // スペックエリアの処理
+    let specHtml = "";
+    if (tool || time || target || scene) {
+        specHtml = `
+            <div class="spec-area" style="margin-top: 15px; display: flex; flex-direction: column; gap: 8px;">
+                ${tool ? `<div class="spec-item" style="background:#FFF; border-radius:15px; padding:12px; border:2px solid #e2e2f9;"><strong>🎨 使用ツール</strong><br><span style="font-size:0.9rem; color:#888;">${tool}</span></div>` : ''}
+                ${time ? `<div class="spec-item" style="background:#FFF; border-radius:15px; padding:12px; border:2px solid #e2e2f9;"><strong>⏰ 制作時間</strong><br><span style="font-size:0.9rem; color:#888;">${time}</span></div>` : ''}
+                ${target ? `<div class="spec-item" style="background:#FFF; border-radius:15px; padding:12px; border:2px solid #e2e2f9;"><strong>👥 ターゲット</strong><br><span style="font-size:0.9rem; color:#888;">${target}</span></div>` : ''}
+                ${scene ? `<div class="spec-item" style="background:#FFF; border-radius:15px; padding:12px; border:2px solid #e2e2f9;"><strong>📺 使用シーン</strong><br><span style="font-size:0.9rem; color:#888;">${scene}</span></div>` : ''}
+            </div>
+        `;
+    }
+
     const infoHtml = `
         <div id="detail-desc-container">
-            <div class="about-section">
-                <p class="desc-text">${desc}</p>
-            </div>
-            <ul class="detail-info-list">
-                <li><span class="label">🎨 使用ツール</span><span class="value">${tools}</span></li>
-                <li><span class="label">⏰ 制作時間</span><span class="value">${time}</span></li>
-                <li><span class="label">👥 ターゲット</span><span class="value">${target}</span></li>
-                <li><span class="label">📺 使用シーン</span><span class="value">${scene}</span></li>
-            </ul>
-        </div>
-    `;
+            ${balloonsHtml}
+            ${specHtml}
+        </div>`;
 
     detailBody.innerHTML = previewHtml + infoHtml;
     document.getElementById('detail-page').classList.remove('hidden');
