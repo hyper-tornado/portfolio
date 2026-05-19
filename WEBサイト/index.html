@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cute Portfolio | Dreamy Works</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Potta+One&display=swap" rel="stylesheet">
+</head>
+
+<body class="cute-theme">
+
+    <div id="loader">
+        <div class="heart-spinner">
+            <span class="heart">♥️</span>
+            <p>Now Loading...</p>
+        </div>
+    </div>
+
+    <header class="cute-header">
+        <div class="logo">Portfolio</div>
+        <div class="menu-trigger" id="menu-btn">
+            <span></span><span></span><span></span>
+        </div>
+    </header>
+
+    <nav id="compact-menu">
+        <div class="menu-close" id="menu-close">×</div>
+        <ul>
+            <li><a href="#" onclick="filterWork('all')">All</a></li>
+            <li><a href="#" onclick="filterWork('goods')">Goods</a></li>
+            <li><a href="#" onclick="filterWork('typography')">Typography</a></li>
+            <li><a href="#" onclick="filterWork('banner')">Banner</a></li>
+            <li><a href="#" onclick="filterWork('web')">Web</a></li>
+        </ul>
+        <div class="menu-deco">💖✨</div>
+    </nav>
+
+    <main>
+        <div class="center-wrapper">
+            <div class="filter-tab-bar">
+                <button class="tab-btn active" onclick="filterWork('all')">All</button>
+                <button class="tab-btn" onclick="filterWork('goods')">Goods</button>
+                <button class="tab-btn" onclick="filterWork('typography')">Typography</button>
+                <button class="tab-btn" onclick="filterWork('banner')">Banner</button>
+                <button class="tab-btn" onclick="filterWork('web')">Web</button>
+            </div>
+        </div>
+
+        <div class="grid-container" id="work-grid">
+
+            <div class="work-card goods shown">
+                <div class="window-frame" onclick="openDetail(
+                    'うちわ', 
+                    'image/utiwa.png', 
+                    'アイドルの応援グッズ「うちわ」を刺繍風に作りました。', 
+                    '・Illustrator（作字、デザイン構成）<br>・Photoshop（刺繍加工、うちわ持ち手取り付け、青リボン＆ピンクリボンの生成と加工）', 
+                    '8時間', 
+                    '10代〜30代女性', 
+                    'グッズ販売、展示会、ライブ、イベント、推し活'
+                )">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="image/utiwa.png" alt="">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="work-card goods shown">
+                <div class="window-frame" onclick="openDetail(
+                    'トレカケース', 
+                    'image/cardcase.pdf', 
+                    `架空のキャラクターを作成してカードケースのグッズを作成しました。<br><br>＜架空のキャラクターの設定情報＞<br>名前：桜倉こはる<br>イメージカラー：ピンク`, 
+                    '・Illustrator<br>・AIGAZOU（キャラクターの画像生成に使用）', 
+                    '3日間', 
+                    '10代〜30代女', 
+                    'グッズ販売、展示会、ライブ、イベント、推し活'
+                )">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="image/cardcase.png" alt="プレビュー">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="work-card typography shown">
+                <div class="window-frame" onclick="openDetail(
+                    '動画のサムネイル画像', 
+                    'image/thumbnail.png', 
+                    `<div class='balloon-text'>架空のゲーム系YouTuberのキル集（ナイスプレー）動画をイメージして作成。</div><div class='balloon-text'>派手で視認性のよい文字を作字し、燃えているような色合いにしました。</div>`,
+                    '・Photoshop', 
+                    '8時間', 
+                    '10代〜30代男女', 
+                    '動画配信のサムネイル画像'
+                )">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="image/thumbnail.png" alt="">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="work-card typography shown">
+                <div class="window-frame" onclick="openDetail(
+                    '歯科ロゴ', 
+                    'image/kitajimasika_rogo.png', 
+                    `<div class='balloon-text'>架空の歯医者さんのロゴ</div><div class='balloon-text'>利用年齢層が小学生が一番多い歯医者さんを想定しポップなデザインに。<br>清潔感が伝わるような落ち着いた配色。<br>歯医者だと一目で分かるように「歯ブラシ」と「歯」のモチーフをデザインに取り入れました。</div><div class='balloon-text'>歯科名の「きたじま」から「北」を連想し「北極グマ＝白くま」をアイコンキャラクターにしました。</div>`, 
+                    'Illustrator', 
+                    '8時間', 
+                    '2歳〜12歳のお子様とその親御様', 
+                    '看板、診察券、Webサイト、封筒、名刺'
+                )">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="image/kitajimasika_rogo.png" alt="">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="work-card typography is-more more-item">
+                <div class="window-frame" onclick="openDetail(
+                    'エレガントなロゴ', 
+                    'image/ereganto_rogo.png', 
+                    '某番組「○子の部屋」のようなエレガントなネームロゴを作字しました。',
+                    '・Illustrator（作字、デザイン構成）<br>・Photoshop（仕上げエフェクト追加）', 
+                    '4時間', 
+                    '10代〜30代男女', 
+                    'ネームロゴ、タイトルロゴ、名刺'
+                )">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="image/ereganto_rogo.png" alt="">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="work-card typography is-more more-item">
+                <div class="window-frame" onclick="openDetail(
+                    'ネームロゴ', 
+                    'image/yoakenoame_rogo.pdf', 
+                    'POPでかわいらしいネームロゴをイメージして作成しました',
+                    'Illustrator', 
+                    '8時間', 
+                    '10代〜30代女', 
+                    'ネームロゴ、タイトルロゴ'
+                )">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="image/yoakenoame_rogo_3D_CMYK.png" alt="">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="work-card typography is-more more-item">
+                <div class="window-frame" onclick="openDetail(
+                    'ショッピグサイトのアイコン', 
+                    'image/shopping_icon.pdf', 
+                    'ショッピグサイトのアイコンを作成',
+                    '・Illustrator（アイコン作成）<br>・figma（モックアップ作成）', 
+                    '8時間', 
+                    '10代〜30代男女', 
+                    'ショッピグサイト'
+                )">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="image/shopping_icon.png" alt="">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="work-card typography is-more more-item">
+                <div class="window-frame" onclick="openDetail(
+                    '派手文字', 
+                    'image/genkaitoppa.png', 
+                    'ギラギラの派手文字でゲームやパチンコの文字をイメージして作りました。',
+                    'Photoshop', 
+                    '7時間', 
+                    '10代〜50代男女', 
+                    'ゲーム、パチンコの演出や広告'
+                )">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="image/genkaitoppa.png" alt="">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="work-card banner is-more more-item">
+                <div class="window-frame" onclick="openDetail(
+                    '漫画広告', 
+                    'image/magagin_lp.png', 
+                    `<div class='balloon-text'>漫画の広告バナー</div><div class='balloon-text'>「双子の秘密」という架空のサスペンスホラー漫画をイメージして作成</div>`,
+                    '・Photoshop<br>・AIGAZOU（キャラクターの画像生成に使用）', 
+                    '2時間30分', 
+                    '10代〜40代男女', 
+                    'Webサイト広告、帯、LPバナー、アプリ内バナー'
+                )">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="image/magagin_lp.png" alt="">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="work-card banner is-more more-item">
+                <div class="window-frame" onclick="openDetail(
+                    '医療求人広告', 
+                    'image/kyujinn_banner.png', 
+                    `<div class='balloon-text'>「医師の求人」だと一目でわかるように医師のフォントを強調して医師の画像の使用しました。</div><div class='balloon-text'>具体的な数値を載せることで転職を考えてる医師がクリックしたくなるような広告にしました。</div>`,
+                    '・Photoshop', 
+                    '4時間', 
+                    '20代〜30代医師', 
+                    'Webサイト広告、看板'
+                )">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="image/kyujinn_banner.png" alt="">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="work-card banner is-more more-item">
+                <div class="window-frame" onclick="openDetail(
+                    '音楽配信アプリケーションの広告', 
+                    'image/music_banner.jpg', 
+                    '曲数、月額料金の情報だけを載せてシンプルで伝わりやすい広告にしました。',
+                    'Photoshop', 
+                    '4時間', 
+                    '18歳〜40代男女', 
+                    'Webサイト広告'
+                )">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="image/music_banner.jpg" alt="">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="work-card banner is-more more-item">
+                <div class="window-frame" onclick="openDetail(
+                    '英語リスニング講座の広告', 
+                    'image/english_bunner.jpg', 
+                    `<div class='balloon-text'>社会人のスキルアップのための広告なのでスーツ姿の社会人の画像を使用。</div><div class='balloon-text'>手軽さをアピールするためスマホでリスニングしている様子にしました。</div>`,
+                    '・Photoshop<br>・AIGAZOU（キャラクターの画像生成に使用）', 
+                    '5時間', 
+                    '20代〜30代社会人', 
+                    'Webサイト広告'
+                )">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="image/english_bunner.jpg" alt="">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="work-card web is-more more-item">
+                <div class="window-frame" onclick="openDetail(
+                    'クイズゲーム', 
+                    'https://hyper-tornado.github.io/quiz/', 
+                    'ミニゲームができるクイズサイトです。直感的な操作で楽しめます。',
+                    'VSコード，HTML，CSS，JavaScript', 
+                    '4日間', 
+                    '6歳〜20代男女,ファミリー層', 
+                    '博物館、教育学習アプリ'
+                )">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="image/quiz.png" alt="QUIZ GAME プレビュー">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="work-card web is-more more-item">
+                <div class="window-frame" onclick="openDetail(
+                    'Coffee shop', 
+                    'image/coffeshop.pdf',
+                    '架架空のコーヒー屋さんのWebサイトのデザインカンプです。',
+                    'figma', 
+                    '5時間', 
+                    '20代〜40代男女', 
+                    'Webサイト'
+                )">
+                    <div class="win-header"><span class="dots">•••</span></div>
+                    <div class="win-content">
+                        <img src="image/coffeshop.png" alt="プレビュー">
+                        <div class="hover-mask"><span>💖</span></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="center-wrapper" id="more-btn-container">
+            <button id="load-more" onclick="showMoreWorks()">＋MORE</button>
+        </div>
+    </main>
+
+    <div id="detail-page" class="hidden">
+        <div class="detail-window">
+            <div class="detail-header">
+                <div class="header-left">
+                    <span class="back-btn" onclick="closeDetail()">← BACK</span>
+                </div>
+                <div class="header-center">
+                    <span id="detail-title">QUIZ GAME</span>
+                </div>
+                <div class="header-right">
+                    <span class="hearts">💖💖💖</span>
+                </div>
+            </div>
+
+            <div class="detail-body" id="detail-body">
+                </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
