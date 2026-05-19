@@ -53,65 +53,64 @@ function showMoreWorks() {
     }
 }
 
-// 作品の形式に合せて、プレビュー枠をぴったりフィットさせる関数
-function openDetail(title, link, desc, tool="", time="", target="", scene="") {
+// 👑 1枚も複数枚も完全に綺麗に処理するopenDetail関数
+function openDetail(title, links, desc, tool="", time="", target="", scene="") {
     const detailBody = document.getElementById('detail-body');
     const detailTitle = document.getElementById('detail-title');
     detailTitle.innerText = title;
 
-    let previewHtml = "";
+    // カンマ「,」で区切られたファイルパスを配列に分解する
+    const linkArray = links.split(',').map(l => l.trim());
+    
+    let innerContentHtml = "";
+    let buttonAreaHtml = "";
 
-    // 拡張子からファイルタイプを細かくチェック
-    const isImage = link.match(/\.(jpg|jpeg|png|gif|PNG)$/i);
-    const isPdf = link.match(/\.pdf$/i);
+    // 画像の枚数分ループを回してHTMLを組み立てる
+    linkArray.forEach((link, index) => {
+        const isImage = link.match(/\.(jpg|jpeg|png|gif|PNG)$/i);
+        const isPdf = link.match(/\.pdf$/i);
 
-    if (isImage) {
-        previewHtml = `
-            <div id="detail-img-container" class="type-image">
-                <div class="iframe-wrapper">
-                    <img src="${link}" alt="プレビュー">
-                </div>
-                <div class="button-area">
-                    <a href="${link}" target="_blank" class="visit-link">全画面で開く ↗</a>
-                </div>
-            </div>`;
-    } else if (isPdf) {
-        previewHtml = `
-            <div id="detail-img-container" class="type-pdf">
-                <div class="iframe-wrapper">
-                    <iframe src="${link}#toolbar=0&navpanes=0&scrollbar=1&view=FitH"></iframe>
-                </div>
-                <div class="button-area">
-                    <a href="${link}" target="_blank" class="visit-link">全画面で開く ↗</a>
-                </div>
-            </div>`;
-    } else {
-        previewHtml = `
-            <div id="detail-img-container" class="type-web">
-                <div class="iframe-wrapper">
-                    <iframe src="${link}"></iframe>
-                </div>
-                <div class="button-area">
-                    <a href="${link}" target="_blank" class="visit-link">全画面で開く ↗</a>
-                </div>
-            </div>`;
+        if (isImage) {
+            innerContentHtml += `<img src="${link}" alt="プレビュー ${index + 1}">`;
+            buttonAreaHtml += `<a href="${link}" target="_blank" class="visit-link">全画面で開く ${linkArray.length > 1 ? index + 1 : ''} ↗</a>`;
+        } else if (isPdf) {
+            innerContentHtml += `<iframe src="${link}#toolbar=0&navpanes=0&scrollbar=1&view=FitH"></iframe>`;
+            buttonAreaHtml += `<a href="${link}" target="_blank" class="visit-link">全画面で開く ↗</a>`;
+        } else {
+            innerContentHtml += `<iframe src="${link}"></iframe>`;
+            buttonAreaHtml += `<a href="${link}" target="_blank" class="visit-link">全画面で開く ↗</a>`;
+        }
+    });
+
+    // 1枚目パスの拡張子でベースのレイアウト（クラス名）を決める
+    const firstLink = linkArray[0];
+    const isFirstImage = firstLink.match(/\.(jpg|jpeg|png|gif|PNG)$/i);
+    let containerClass = isFirstImage ? "type-image" : "type-pdf";
+
+    // 🌟 2枚以上あるときは「multi-active」クラスを合体させて、枠を下に自動拡張させる
+    if (linkArray.length > 1) {
+        containerClass += " multi-active";
     }
 
-    // 👑 【完全解決】自動での改行分割を完全にやめました。
-    // HTMLから送られてきた文字の中に「<div」が入っているかどうかで処理を分けます。
+    let previewHtml = `
+        <div id="detail-img-container" class="${containerClass}">
+            <div class="iframe-wrapper">
+                ${innerContentHtml}
+            </div>
+            <div class="button-area">
+                ${buttonAreaHtml}
+            </div>
+        </div>`;
+
+    // 説明文吹き出しの処理
     let balloonsHtml = "";
-    
     if (desc.includes('<div')) {
-        // 【DIVタグが書いてある場合】
-        // あなたがHTMLに書いた複数の <div>...</div> 構造をそのまま画面に反映させます。
         balloonsHtml = desc;
     } else {
-        // 【DIVタグがない、普通のテキストの場合】
-        // 全体を自動的に1つの吹き出しクラス（balloon-text）で包みます。（<br>での改行もそのまま有効になります）
         balloonsHtml = `<div class="balloon-text">${desc}</div>`;
     }
 
-    // スペックエリアの処理
+    // 下部スペックエリアの処理
     let specHtml = "";
     if (tool || time || target || scene) {
         specHtml = `
