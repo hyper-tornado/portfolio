@@ -62,7 +62,7 @@ body {
 .title-balloon-box {
     position: relative;
     background: #FFFFFF;
-    border: 3.5px solid #6673ee;
+    border: 2.5px solid #6673ee;
     padding: 14px 30px;
     border-radius: 30px;
     box-shadow: 0 5px 0 rgba(102, 115, 238, 0.2);
@@ -77,7 +77,7 @@ body {
     left: 50%;
     transform: translateX(-50%);
     border-style: solid;
-    border-width: 12px 10px 0 10px;
+    border-width: 15px 10px 0 11px;
     border-color: #FFFFFF transparent transparent transparent;
     z-index: 2;
 }
@@ -89,7 +89,7 @@ body {
     left: 50%;
     transform: translateX(-50%);
     border-style: solid;
-    border-width: 14px 12px 0 12px;
+    border-width: 17px 12px 0 12px;
     border-color: #6673ee transparent transparent transparent;
     z-index: 1;
 }
@@ -124,13 +124,22 @@ body {
     border-bottom: var(--white-border);
     padding: 15px 5%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* ロゴが左、ナビが右に配置されます */
     align-items: center;
     position: sticky;
     top: 0;
     z-index: 1000;
     width: 100%;
 }
+
+
+/* もしロゴの直後にボタンを置きたい（左側に寄せる）場合は以下のように変更 */
+/* .page-nav-bar {
+    display: flex;
+    gap: 15px;
+    margin-left: 30px; 
+    margin-right: auto;
+} */
 
 .logo {
     font-size: 1.5rem;
@@ -139,31 +148,35 @@ body {
     font-weight: bold;
 }
 
-.page-nav-bar {
-    display: flex;
-    gap: 15px;
-}
 
 .nav-link {
-    color: #FFFFFF;
+    color: #ffffff;
     text-decoration: none;
     font-weight: bold;
     font-size: 0.95rem;
     padding: 6px 18px;
     border-radius: 20px;
     transition: 0.3s;
-    background: rgba(255, 255, 255, 0.15);
-    border: 2px solid transparent;
+    background: #5c81f2 !important;
+    border: 0.5px solid #e1d6ff;
 }
 
+/* マウスホバー時のスタイル（色が少し濃くなり、浮き上がる） */
 .nav-link:hover {
     background: rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    /* transform: translateY(-2px); 少し上に動く */
+    cursor: pointer;
 }
 
+/* 現在のページにいる状態（アクティブ） */
 .nav-link.active {
-    background: #FFFFFF;
-    color: #5c81f2;
-    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.1);
+    background: #a8c6ff !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.15); /* 影を強調して「押されている感」を出す */
+    transform: translateY(2px); /* 少し沈んだ見た目にする */
+    border: 2px solid #e1d6ff; /* 薄い色で枠をつけて強調 */
+    pointer-events: none; /* クリック無効化（現在のページなので） */
 }
 
 .menu-trigger {
@@ -217,32 +230,40 @@ body {
    ============================================================ */
 .filter-tab-bar {
     display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+    gap: 5px; /* ボタン同士の隙間を少し狭める */
+    flex-wrap: nowrap; /* 改行を禁止する（ここが重要！） */
     justify-content: center;
-}
+    overflow-x: auto; /* 画面からはみ出る場合は横スクロールさせる */
+    padding-bottom: 10px; /* スクロールバーが見やすいように */
+    width: 100%;
+    -webkit-overflow-scrolling: touch; /* iOSでのスクロールを滑らかに */}
 
 .tab-btn {
     background: #FFFFFF;
     border: 2px solid #9cbdff;
     color: #6a8bf1;
-    padding: 8px 25px;
+    padding: 8px 20px;
     border-radius: 50px;
     cursor: pointer;
     font-weight: bold;
     font-family: inherit;
     transition: 0.3s;
     box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
+    font-size: 0.85rem; /* スマホ用にフォントも少し小さく */
+    white-space: nowrap; /* 文字が折り返さないようにする */
 }
 
 .tab-btn:hover {
-    transform: translateY(-2px);
+    background-color: #f0f7ff; /* ホバー時の背景色を追加して反応をわかりやすく */
+    color: #4781d9; /* テキストカラーを濃く */
+    border-color: #4781d9; /* 境界線を濃く */
+    box-shadow: 0 6px 0 rgba(0, 0, 0, 0.1); /* 影を少し太くして浮き上がりを表現 */
 }
 
 .tab-btn.active {
     background: #4781d9;
     color: #FFFFFF;
-    transform: translateY(2px);
+    border-color: #4781d9;
     box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
 }
 
@@ -303,6 +324,7 @@ body {
     padding-left: 10px;
     display: flex;
     align-items: center;
+    border-bottom: 2px solid #6673ee; 
 }
 
 .dots {
@@ -583,7 +605,7 @@ body {
     left: -8px;
     top: 22px;
     border-style: solid;
-    border-width: 8px 10px 8px 0;
+    border-width: 8px 10px 8px ;
     border-color: transparent #eef7ff transparent transparent;
     z-index: 2;
 }
@@ -615,6 +637,7 @@ body {
     padding-left: 10px;
     display: flex;
     align-items: center;
+    border-bottom: 2px solid #6673ee; 
 }
 
 .profile-card .dots {
@@ -760,15 +783,15 @@ body {
    8. ファーストビュー（ヒーロー）
    ============================================================ */
 .hero-section {
-    max-width: 1200px;
-    margin: 40px auto 60px;
+    max-width: 1600px;
+    margin: 5px auto 60px;
     padding: 0 20px;
     box-sizing: border-box;
 }
 
 .hero-window {
     background: #FFFFFF;
-    border: 4px solid #6673ee;
+    border: 2px solid #6673ee;
     border-radius: 20px;
     box-shadow: 0 12px 30px rgba(102, 115, 238, 0.15);
     overflow: hidden;
@@ -777,13 +800,14 @@ body {
     flex-direction: column;
 }
 
-.win-header {
+/* 1. ヒーロー専用ヘッダーのスタイル */
+.hero-header {
     background: #e1d6ff;
-    height: 35px;
+    height: 35px; /* ヒーローの高さ */
     padding-left: 15px;
     display: flex;
     align-items: center;
-    border-bottom: 4px solid #6673ee;
+    border-bottom: 2px solid #6673ee; 
 }
 
 .win-title-text {
@@ -800,7 +824,7 @@ body {
     aspect-ratio: 19 / 9;
     overflow: hidden;
     position: relative;
-    border-bottom: 4px solid #6673ee;
+    border-bottom: 2px solid #6673ee;
     background: #FFFFFF;
 }
 
@@ -816,6 +840,7 @@ body {
     height: 100%;
     object-fit: contain;
     display: block;
+    border-right: 2px solid #6673ee; /* 線を太くしたい場合は 2px の数字を大きく */
 }
 
 .hero-controls-wrapper {
@@ -834,7 +859,7 @@ body {
     width: 35px;
     height: 35px;
     background: #FFFFFF;
-    border: 3px solid #6673ee;
+    border: 2px solid #6673ee;
     color: #6673ee;
     border-radius: 50%;
     cursor: pointer;
@@ -957,7 +982,7 @@ body {
     }
 
     .hero-section {
-        margin: 85px auto 20px !important;
+        margin: 5px auto 20px !important;
         padding: 0 15px;
     }
 
