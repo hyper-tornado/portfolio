@@ -591,10 +591,10 @@ body {
 .balloon-text::before {
     content: "";
     position: absolute;
-    left: -10px;
-    top: 22px;
+    left: -12px; /* 枠線の太さを考慮して調整 */
+    top: 25px;
     border-style: solid;
-    border-width: 8px 10px 8px 0;
+    border-width: 9px 12px 9px 0;
     border-color: transparent #b8baff transparent transparent;
     z-index: 1;
 }
@@ -602,10 +602,11 @@ body {
 .balloon-text::after {
     content: "";
     position: absolute;
-    left: -8px;
-    top: 22px;
+    /* 枠から離れないよう、leftをマイナス方向に調整します */
+    left: -10px; 
+    top: 25px;
     border-style: solid;
-    border-width: 8px 10px 8px ;
+    border-width: 9px 12px 9px 0;
     border-color: transparent #eef7ff transparent transparent;
     z-index: 2;
 }
@@ -783,7 +784,7 @@ body {
    8. ファーストビュー（ヒーロー）
    ============================================================ */
 .hero-section {
-    max-width: 1600px;
+    max-width: 1200px;
     margin: 5px auto 60px;
     padding: 0 20px;
     box-sizing: border-box;
